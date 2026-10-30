@@ -1,0 +1,32 @@
+<!-- Appendix B, full-stack (appendices:322-353), verbatim from the book. -->
+
+# Project: [Full-Stack App]
+Frontend: React + TypeScript (src/client/)
+Backend: Express + TypeScript (src/server/)
+Database: PostgreSQL + Prisma (prisma/)
+
+## Conventions
+- Frontend: functional components, hooks only, no class components
+- Backend: route -> service -> database layer separation
+- Shared types in src/shared/types.ts
+- All database access through Prisma (no raw SQL)
+- API responses use { data, error, meta } shape
+
+## Structure
+- src/client/ (React frontend)
+- src/server/routes/ (API routes)
+- src/server/services/ (business logic)
+- src/shared/ (shared types and utilities)
+- prisma/ (schema and migrations)
+- tests/ (mirrors src/ structure)
+
+## Rules
+- Never modify prisma/migrations/ files
+- Never modify .env files
+- Frontend changes must not break backend tests
+- Backend changes must not break frontend types
+- Run full test suite before committing
+
+## Workflow
+- Show plan before cross-boundary changes (client + server)
+- Use shared types for API contracts

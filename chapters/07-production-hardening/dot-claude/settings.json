@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Read", "Edit", "Write", "Glob", "Grep",
+      "Bash(npm test)",
+      "Bash(npm run lint)",
+      "Bash(npm run build)",
+      "Bash(npx prisma generate)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git branch)"
+    ],
+    "deny": [
+      "Bash(git push *)",
+      "Bash(git push)",
+      "Bash(git reset --hard *)",
+      "Bash(git checkout -- *)",
+      "Bash(git clean *)",
+      "Bash(rm -rf *)",
+      "Bash(rm -r *)",
+      "Bash(drop *)",
+      "Bash(DROP *)",
+      "Bash(npx prisma migrate reset *)",
+      "Bash(npx prisma db push --force-reset)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=$(jq -r '.tool_input.file_path'); grep -nE 'API_KEY|SECRET|PASSWORD|PRIVATE_KEY' \"$f\" && { echo 'WARNING: possible credential in file' >&2; exit 2; } || exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}

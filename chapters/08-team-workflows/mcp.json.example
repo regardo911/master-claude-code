@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest"
+      ],
+      "env": {}
+    },
+    "db": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@bytebase/dbhub",
+        "--dsn",
+        "${DATABASE_URL}"
+      ],
+      "env": {}
+    }
+  }
+}

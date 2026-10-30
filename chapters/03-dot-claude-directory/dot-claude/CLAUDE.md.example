@@ -1,0 +1,42 @@
+<!-- Chapter 3: the five TaskFlow blocks (ch03:50-56, 64-73, 81-89, 97-105, 113-120) joined in order.
+     Two lines differ from the print, see BOOK-FIXES.md: the @/ alias rule (ch03:72) is gone, because
+     the chapter 4 tsconfig has no alias, and the last line imports the memory index (ch03:349). -->
+
+# Project: TaskFlow API
+
+A REST API for task management built with Express.js and TypeScript.
+Stack: Node.js 20, Express 4, PostgreSQL 16, Prisma ORM, Zod validation.
+Deployed on Railway. CI runs on GitHub Actions.
+
+## Conventions
+- All files use TypeScript strict mode
+- Functions use explicit return types (no inferred returns)
+- Error handling uses custom AppError class in src/lib/errors.ts
+- Database queries go through Prisma, never raw SQL
+- API responses follow the shape in src/lib/response.ts
+- Tests use Vitest with the patterns in tests/helpers/
+
+## Structure
+- src/routes/ //API route handlers (one file per resource)
+- src/services/ //Business logic (called by routes, calls Prisma)
+- src/lib/ //Shared utilities and types
+- src/middleware/ //Express middleware
+- tests/ //Mirror of src/ structure with .test.ts suffix
+- prisma/ //Schema and migrations (do NOT edit migrations manually)
+
+## Rules
+- Never run git push without explicit user approval
+- Never delete files in src/ without reading them first
+- Never modify .env or .env.local files
+- Always run `npm test` after modifying any file in src/
+- When creating new routes, always add corresponding tests
+- If a test fails, fix the code, don't fix the test to pass
+
+## Workflow
+- Show me the plan before making changes to more than 3 files
+- Commit messages follow conventional commits (feat:, fix:, refactor:)
+- When I ask for a code review, check for: type safety, error handling,
+  test coverage, and SQL injection vectors
+- Prefer editing existing files over creating new ones
+
+@.claude/memory/MEMORY.md

@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  checks:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: jq
+        run: command -v jq || (sudo apt-get update && sudo apt-get install -y jq)
+      - run: bash tests/run.sh
+
+  taskflow:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: chapters/04-first-real-build/taskflow
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build

@@ -1,0 +1,44 @@
+<!-- Chapter 7. Not printed in the book: written to its description at ch07:218-220 and ch07:285.
+     Copy it to SECURITY.md in your project root and change every line that is not true for you. -->
+# What Claude Code can and can't do in this project
+
+Claude Code cannot push to git, cannot run destructive database commands, and will ask for approval before modifying more than 5 files.
+
+## Denied (`.claude/settings.json`, deny list)
+
+The deny list blocks the command shapes below. It matches literal text, so a variant can get past it.
+
+- `git push` and `git push *`: `Bash(git push)`, `Bash(git push *)`
+- `Bash(git reset --hard *)`, `Bash(git checkout -- *)`, `Bash(git clean *)`
+- `Bash(rm -rf *)`, `Bash(rm -r *)`
+- `Bash(drop *)`, `Bash(DROP *)`
+- `Bash(npx prisma migrate reset *)`, `Bash(npx prisma db push --force-reset)`
+
+Why: each one deletes data, discards work or publishes changes.
+
+## Allowed without asking (allow list)
+
+`Read`, `Edit`, `Write`, `Glob`, `Grep`, `npm test`, `npm run lint`, `npm run build`, `npx prisma generate`, `npx tsc --noEmit`, `git status`, `git diff *`, `git log *`, `git branch`.
+
+Why: they read, check or build. Anything on neither list, curl included, asks a person first.
+
+## Rules Claude Code follows (`.claude/CLAUDE.md`, Safety Rules)
+
+- Never modify .env or .env.local files
+- Never modify files in database/migrations/ without explicit approval
+- Before making changes to more than 5 files, show the plan and wait for approval
+- Never run commands against production databases
+- Always run tests after modifying source files
+- If a test fails, fix the code. Never modify a test to make it pass.
+
+## Hook
+
+A `PostToolUse` hook on `Write|Edit` scans each written file for `API_KEY`, `SECRET`, `PASSWORD` or `PRIVATE_KEY` and exits 2 with `WARNING: possible credential in file`. It needs `jq`. It flags after the write; the file is already on disk.
+
+## Test procedure
+
+Run the 7 safety tests (chapter 7) after every change to `.claude/settings.json` or `.claude/CLAUDE.md`. The latest results are in `safety-tests.md`, next to this file.
+
+## Environment
+
+`.env` points at a local database only. Never a staging or production URL.

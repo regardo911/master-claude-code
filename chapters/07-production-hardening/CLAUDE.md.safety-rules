@@ -1,0 +1,9 @@
+<!-- Chapter 7 (ch07:98-106), verbatim from the book. Append this section to your .claude/CLAUDE.md. -->
+
+## Safety Rules
+- Never modify .env or .env.local files
+- Never modify files in database/migrations/ without explicit approval
+- Before making changes to more than 5 files, show the plan and wait for approval
+- Never run commands against production databases
+- Always run tests after modifying source files
+- If a test fails, fix the code. Never modify a test to make it pass.

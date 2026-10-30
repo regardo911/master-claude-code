@@ -1,0 +1,23 @@
+<!-- Appendix B, solo (appendices:214-236), verbatim from the book. -->
+
+# Project: [Your Project]
+[Description. Stack details.]
+
+## Conventions
+- TypeScript strict mode
+- Explicit return types on exported functions
+- Tests with Vitest
+
+## Structure
+- src/ (application code)
+- tests/ (test files)
+- docs/ (documentation)
+
+## Rules
+- Run tests after modifying source files
+- Never modify .env files
+- Never run git push without approval
+
+## Workflow
+- Show plan before multi-file changes
+- Conventional commit messages

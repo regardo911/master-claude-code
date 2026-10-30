@@ -1,0 +1,23 @@
+<!-- Appendix B, team lead (appendices:271-293), verbatim from the book. -->
+
+# Project: [Team Project]
+[Description. Stack. Deployment target.]
+
+## Conventions (enforced for all developers)
+- [Stack-specific conventions]
+- [Naming conventions]
+- [Testing requirements]
+
+## Structure (enforced)
+- [Directory layout with roles]
+
+## Safety (non-negotiable)
+- Never modify .env files
+- Never modify database migrations
+- Never run git push
+- Before modifying >5 files, show plan
+- Run tests after every source change
+- Do not refactor code outside current task
+
+## Architecture Decisions
+- See docs/decisions/ for ADRs

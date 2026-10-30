@@ -1,0 +1,10 @@
+<!-- Chapter 8 (ch08:237-246), verbatim from the book. Goes to .github/PULL_REQUEST_TEMPLATE.md in your repo. -->
+
+## AI Review Checklist
+- [ ] Generated code follows existing patterns (error handling, naming, structure)
+- [ ] No new dependencies that duplicate existing functionality
+- [ ] No duplicate utility functions or types
+- [ ] Tests verify behavior, not just execution
+- [ ] Changes are scoped to the stated task (no surprise refactors)
+- [ ] No hardcoded values that should be configurable
+- [ ] Auth checks present on all protected endpoints

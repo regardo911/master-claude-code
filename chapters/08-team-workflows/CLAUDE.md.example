@@ -1,0 +1,31 @@
+<!-- Chapter 8 (ch08:21-49). Two lines differ from the print, see BOOK-FIXES.md: the @/ alias rule
+     (ch08:34) is gone, and the last line imports the memory index (ch03:349). -->
+
+# Project: TaskFlow API
+# Team CLAUDE.md (applies to all developers)
+
+## Stack
+Express.js + TypeScript, PostgreSQL + Prisma, Vitest
+
+## Conventions (enforced)
+- TypeScript strict mode on all files
+- Explicit return types on all exported functions
+- Error handling through AppError class (src/lib/errors.ts)
+- Database access only through Prisma (no raw SQL)
+- API responses use ResponseShape type (src/lib/response.ts)
+
+## File Structure (enforced)
+- New routes go in src/routes/ (one file per resource)
+- New services go in src/services/ (one per resource)
+- New middleware goes in src/middleware/
+- Tests mirror src/ structure with .test.ts suffix
+
+## Safety (non-negotiable)
+- Never modify .env files
+- Never modify database migrations
+- Never run git push
+- Before modifying >5 files, show plan and wait for approval
+- Run tests after every source file change
+- Do not refactor code that isn't part of the current task
+
+@.claude/memory/MEMORY.md
