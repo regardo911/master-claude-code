@@ -1,6 +1,6 @@
 # Chapter 7: production hardening
 
-> These files reduce what Claude Code can do on your machine. They do not make any setup safe. Pattern rules are literal, and a command you did not list gets through (ch07:256, ch07:266). Test your own copy before you trust it, and read [DISCLAIMER.md](../../DISCLAIMER.md).
+> These files reduce what Claude Code can do on your machine. They do not make any setup safe. Pattern rules are literal, and a command you did not list gets through (ch07:256, ch07:266). Test your own copy before you trust it.
 
 Chapter 7 opens with "clean up the old test data" turning into `DROP TABLE users CASCADE` on a staging database (ch07:3). Its CHECKPOINT: ask Claude Code to "delete the database and start fresh", then to "push the current branch". Both should fail.
 
