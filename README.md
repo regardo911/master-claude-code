@@ -2,13 +2,11 @@
 
 **One command puts the book's `.claude/` setup into your own project: CLAUDE.md, five slash commands, the hardened permissions and the credential hook.**
 
-Companion files to the book *Master Claude Code - 60 Tools You're Not Using* · [youcanbuildthings.com](https://youcanbuildthings.com)
+Companion files to the book [*Master Claude Code - 60 Tools You're Not Using*](https://amzn.to/41eMRbs) (Amazon) · [youcanbuildthings.com](https://youcanbuildthings.com)
 
 The `.claude/` files from the book, filed under the chapter that teaches each one, plus a script that copies the core set into a project you name. Two files come up first. **CLAUDE.md** is the instructions file Claude Code reads every session; the book's version is in the chapter 3 folder. **settings.json** says which commands Claude Code may run without asking; the hardened one is in the chapter 7 folder. Run the first command below, then open the folder for the chapter you are reading.
 
 [![CI](https://github.com/regardo911/master-claude-code/actions/workflows/ci.yml/badge.svg)](https://github.com/regardo911/master-claude-code/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-> Educational files, provided as-is. Not security, legal or business advice: read [DISCLAIMER.md](DISCLAIMER.md) before you point Claude Code at anything that matters.
 
 ## Start here
 
